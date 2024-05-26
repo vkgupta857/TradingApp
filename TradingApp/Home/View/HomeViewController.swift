@@ -54,7 +54,7 @@ class HomeViewController: UITabBarController {
         setupViewModel()
         setupNavigationBar()
         setupUI()
-//        setupSummaryView()
+        setupSummaryView()
     }
     
     private func setupNavigationBar() {
@@ -79,8 +79,7 @@ class HomeViewController: UITabBarController {
         NSLayoutConstraint.activate([
             portfolioSummaryView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             portfolioSummaryView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            portfolioSummaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            portfolioSummaryView.heightAnchor.constraint(equalToConstant: 150)
+            portfolioSummaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         // Configure the summary view with sample data
@@ -93,6 +92,9 @@ class HomeViewController: UITabBarController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -163,5 +165,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             cell.separatorView.isHidden = true
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return self.portfolioSummaryView.frame.height
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: self.portfolioSummaryView.frame.height))
+        return view
     }
 }

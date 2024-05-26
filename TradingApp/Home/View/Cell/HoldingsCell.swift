@@ -142,7 +142,7 @@ class HoldingsCell: UITableViewCell {
         pnlLbl.text = "P&L:"
         
         let pnl = Double(model.quantity ?? 0) * ((model.ltp ?? 0) - (model.avgPrice ?? 0))
-        pnlValueLbl.text = (pnl >= 0 ? "" : "-") + "₹\(String(format: "%.2f", pnl))"
+        pnlValueLbl.text = (pnl >= 0 ? "" : "-") + "₹\(String(format: "%.2f", abs(pnl)))"
         pnlValueLbl.textColor = pnl >= 0 ? .systemGreen : .systemRed
     }
 }

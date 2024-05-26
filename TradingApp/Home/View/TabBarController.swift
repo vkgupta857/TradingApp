@@ -14,10 +14,10 @@ class TabBarController: UITabBarController {
         
         // Setup View Controllers
         let portfolioVC = HomeViewController()
-        let watchlistVC = UIViewController() // Replace with your actual ViewController for Watchlist
-        let ordersVC = UIViewController() // Replace with your actual ViewController for Orders
-        let fundsVC = UIViewController() // Replace with your actual ViewController for Funds
-        let investVC = UIViewController() // Replace with your actual ViewController for Invest
+        let watchlistVC = UIViewController()
+        let ordersVC = UIViewController()
+        let fundsVC = UIViewController()
+        let investVC = UIViewController()
         
         // Set titles and icons for the tab bar items
         portfolioVC.title = "Portfolio"
