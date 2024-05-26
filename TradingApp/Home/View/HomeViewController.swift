@@ -22,13 +22,24 @@ class HomeViewController: UITabBarController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "exclamationmark.triangle.fill")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+        imageView.tintColor = .lightGray
         view.addSubview(imageView)
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Something went wrong"
+        view.addSubview(label)
+        
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
-            imageView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
-            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 72),
+            imageView.widthAnchor.constraint(equalToConstant: 72),
+            
+            label.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         return view
@@ -39,6 +50,8 @@ class HomeViewController: UITabBarController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    let refreshControl = UIRefreshControl()
     
     let portfolioSummaryView = PortfolioSummaryView()
     
@@ -93,19 +106,15 @@ class HomeViewController: UITabBarController {
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
-        
-        self.view.addSubview(activityIndicator)
-        NSLayoutConstraint.activate([
-            activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            activityIndicator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
         
         self.view.addSubview(errorView)
@@ -114,6 +123,14 @@ class HomeViewController: UITabBarController {
             errorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             errorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             errorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+        
+        self.view.addSubview(activityIndicator)
+        NSLayoutConstraint.activate([
+            activityIndicator.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            activityIndicator.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            activityIndicator.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            activityIndicator.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
@@ -127,12 +144,27 @@ class HomeViewController: UITabBarController {
         
         viewModel.apiStateUpdated = { [weak self] in
             DispatchQueue.main.async {
+                self?.refreshControl.endRefreshing()
                 self?.activityIndicator.isHidden = self?.viewModel.state == .loaded
                 self?.errorView.isHidden = self?.viewModel.error == nil
+                self?.updateError()
+                self?.tableView.isHidden = self?.viewModel.error != nil
             }
         }
         
         viewModel.getHoldings()
+    }
+    
+    func updateError() {
+        for view in errorView.subviews where type(of: view) == UILabel.self {
+            if let label = view as? UILabel {
+                label.text = self.viewModel.error
+            }
+        }
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        self.viewModel.getHoldings()
     }
     
     @objc private func profileButtonTapped() {
