@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		758F14E52C0276B200FD3C39 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F14E42C0276B200FD3C39 /* TabBarController.swift */; };
+		758F14E72C02783C00FD3C39 /* PortfolioSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758F14E62C02783C00FD3C39 /* PortfolioSummaryView.swift */; };
 		75C9AA5D2BFF8FA700045CB0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9AA5C2BFF8FA700045CB0 /* AppDelegate.swift */; };
 		75C9AA5F2BFF8FA700045CB0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9AA5E2BFF8FA700045CB0 /* SceneDelegate.swift */; };
 		75C9AA612BFF8FA700045CB0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9AA602BFF8FA700045CB0 /* HomeViewController.swift */; };
-		75C9AA642BFF8FA700045CB0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 75C9AA632BFF8FA700045CB0 /* Base */; };
 		75C9AA662BFF8FA900045CB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75C9AA652BFF8FA900045CB0 /* Assets.xcassets */; };
 		75C9AA692BFF8FA900045CB0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 75C9AA682BFF8FA900045CB0 /* Base */; };
 		75C9AA742BFF8FA900045CB0 /* TradingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C9AA732BFF8FA900045CB0 /* TradingAppTests.swift */; };
@@ -40,11 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		758F14E42C0276B200FD3C39 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		758F14E62C02783C00FD3C39 /* PortfolioSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSummaryView.swift; sourceTree = "<group>"; };
 		75C9AA592BFF8FA700045CB0 /* TradingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TradingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75C9AA5C2BFF8FA700045CB0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75C9AA5E2BFF8FA700045CB0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		75C9AA602BFF8FA700045CB0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		75C9AA632BFF8FA700045CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75C9AA652BFF8FA900045CB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75C9AA682BFF8FA900045CB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75C9AA6A2BFF8FA900045CB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,7 +113,6 @@
 				75C9AA8C2BFF8FCD00045CB0 /* Helper */,
 				75C9AA5C2BFF8FA700045CB0 /* AppDelegate.swift */,
 				75C9AA5E2BFF8FA700045CB0 /* SceneDelegate.swift */,
-				75C9AA622BFF8FA700045CB0 /* Main.storyboard */,
 				75C9AA652BFF8FA900045CB0 /* Assets.xcassets */,
 				75C9AA672BFF8FA900045CB0 /* LaunchScreen.storyboard */,
 				75C9AA6A2BFF8FA900045CB0 /* Info.plist */,
@@ -159,6 +160,8 @@
 			children = (
 				75C9AA972C00A7A700045CB0 /* Cell */,
 				75C9AA602BFF8FA700045CB0 /* HomeViewController.swift */,
+				758F14E42C0276B200FD3C39 /* TabBarController.swift */,
+				758F14E62C02783C00FD3C39 /* PortfolioSummaryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -293,7 +296,6 @@
 			files = (
 				75C9AA662BFF8FA900045CB0 /* Assets.xcassets in Resources */,
 				75C9AA692BFF8FA900045CB0 /* Base in Resources */,
-				75C9AA642BFF8FA700045CB0 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +321,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				75C9AA612BFF8FA700045CB0 /* HomeViewController.swift in Sources */,
+				758F14E72C02783C00FD3C39 /* PortfolioSummaryView.swift in Sources */,
+				758F14E52C0276B200FD3C39 /* TabBarController.swift in Sources */,
 				75C9AA5D2BFF8FA700045CB0 /* AppDelegate.swift in Sources */,
 				75C9AA5F2BFF8FA700045CB0 /* SceneDelegate.swift in Sources */,
 				75C9AA962BFF973B00045CB0 /* HoldingsModel.swift in Sources */,
@@ -361,14 +365,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		75C9AA622BFF8FA700045CB0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				75C9AA632BFF8FA700045CB0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		75C9AA672BFF8FA900045CB0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -432,7 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -489,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -510,10 +506,11 @@
 				INFOPLIST_FILE = TradingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,10 +539,11 @@
 				INFOPLIST_FILE = TradingApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

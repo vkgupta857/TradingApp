@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITabBarController {
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -42,6 +42,8 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    let portfolioSummaryView = PortfolioSummaryView()
+    
     lazy var viewModel: HomeViewModel = {
         return HomeViewModel()
     }()
@@ -50,10 +52,43 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupViewModel()
+        setupNavigationBar()
         setupUI()
+//        setupSummaryView()
+    }
+    
+    private func setupNavigationBar() {
+        // Set the title
+        self.navigationItem.title = "Portfolio"
+        
+        // Profile button on the left
+        let profileButton = UIBarButtonItem(image: UIImage(systemName: "person.circle"), style: .plain, target: self, action: #selector(profileButtonTapped))
+        self.navigationItem.leftBarButtonItem = profileButton
+        
+        // Sorting and search buttons on the right
+        let sortButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortButtonTapped))
+        let searchButton = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        self.navigationItem.rightBarButtonItems = [searchButton, sortButton]
+    }
+    
+    private func setupSummaryView() {
+        // Add the summary view
+        portfolioSummaryView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(portfolioSummaryView)
+        
+        NSLayoutConstraint.activate([
+            portfolioSummaryView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            portfolioSummaryView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            portfolioSummaryView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            portfolioSummaryView.heightAnchor.constraint(equalToConstant: 150)
+        ])
+        
+        // Configure the summary view with sample data
+        portfolioSummaryView.configureSummary(holdings: viewModel.holdings)
     }
     
     func setupUI() {
+        view.backgroundColor = .systemBackground
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -97,6 +132,21 @@ class HomeViewController: UIViewController {
         }
         
         viewModel.getHoldings()
+    }
+    
+    @objc private func profileButtonTapped() {
+        // Action for profile button tap
+        print("Profile button tapped")
+    }
+    
+    @objc private func sortButtonTapped() {
+        // Action for sort button tap
+        print("Sort button tapped")
+    }
+    
+    @objc private func searchButtonTapped() {
+        // Action for search button tap
+        print("Search button tapped")
     }
 }
 
