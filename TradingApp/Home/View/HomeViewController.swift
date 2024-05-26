@@ -20,8 +20,6 @@ class HomeViewController: UITabBarController {
     let errorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        
         
         let imageView = UIImageView()
         imageView.image = UIImage(named: "exclamationmark.triangle.fill")
@@ -123,6 +121,7 @@ class HomeViewController: UITabBarController {
         viewModel.holdingsUpdated = { [weak self] in
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.portfolioSummaryView.configureSummary(holdings: self?.viewModel.holdings ?? [])
             }
         }
         
