@@ -22,7 +22,8 @@ class ServiceManager {
     
     private init() { }
     
-    let baseUrl = "https://35dee773a9ec441e9f38d5fc249406ce.api.mockbin.io"
+    // TODO: Add your mockbin URL here
+    let baseUrl = "https://<mockbin-id>.api.mockbin.io"
     
     func getRequest<T: Codable>(endpoint: EndPoints, responseModel: T.Type, completion: ((Swift.Result<T, APIError>) -> Void)?) {
         
